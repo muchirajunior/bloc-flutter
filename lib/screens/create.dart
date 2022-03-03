@@ -1,5 +1,8 @@
+import 'package:blocflutter/bloc/bloc.dart';
+import 'package:blocflutter/models/todo.dart';
 import 'package:blocflutter/screens/components/components.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class Create extends StatefulWidget {
   const Create({ Key? key }) : super(key: key);
@@ -13,7 +16,11 @@ class _CreateState extends State<Create> {
   var todo=TextEditingController();
   var description=TextEditingController();
   
-  addTodo()=> print("adding a todo");
+  addTodo(){
+     context.read<TodoBloc>().eventHandler(Events.add, Todo(name: todo.text,description: description.text));
+     todo.clear();
+     description.clear();
+  }
 
   @override
   Widget build(BuildContext context) {
