@@ -1,4 +1,5 @@
-import 'package:blocflutter/models/todo.dart';
+part of 'todobloc.dart';
+
 
 void addTodo(List state,var data){
     data.id=state.length+1;
